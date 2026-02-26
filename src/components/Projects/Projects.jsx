@@ -1,7 +1,39 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Folder } from 'lucide-react';
+import { ExternalLink, Github, Folder, Linkedin } from 'lucide-react';
 
 const projects = [
+    {
+        title: "My Portfolio",
+        date: "Feb 2026",
+        description: "A personal portfolio website built with React and Vite to showcase projects and skills, featuring a responsive design and smooth navigation.",
+        tech: ["React", "Vite", "Tailwind CSS"],
+        github: "https://github.com/Ishitaghosh27/My_portfolio",
+        demo: "http://localhost:5173/"
+    },
+    {
+        title: "Music Player App",
+        date: "Jan 2026",
+        description: "A web-based music player application built with Django, allowing users to play, manage, and enjoy their music collections through a clean interface.",
+        tech: ["Django", "Python", "SQLite", "JavaScript"],
+        github: "https://github.com/Ishitaghosh27/music_player_app",
+        demo: "#"
+    },
+    {
+        title: "Snake and Ladder",
+        date: "Dec 2025",
+        description: "A classic 2-player Snake and Ladder board game featuring a 10x10 grid with interactive gameplay and visual representation of snakes and ladders.",
+        tech: ["HTML", "CSS", "JavaScript", "Canvas API"],
+        github: "https://github.com/Ishitaghosh27/Snake_and_ladder",
+        demo: "#"
+    },
+    {
+        title: "Whack-A-Mole",
+        date: "Nov 2025",
+        description: "A classic Whack-a-Mole arcade game implementation where players hit moles to score points within a time limit.",
+        tech: ["HTML", "CSS", "JavaScript"],
+        github: "https://github.com/Ishitaghosh27/Whack-AMole",
+        demo: "#"
+    },
     {
         title: "Personal Finance Dashboard",
         date: "Oct 2025 - Dec 2025",
@@ -52,41 +84,60 @@ export default function Projects() {
                     <p className="text-slate-400 max-w-2xl mx-auto">Some of the core applications and prototypes I have built during my learning journey and internships.</p>
                 </motion.div>
 
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
                     {projects.map((project, index) => (
                         <motion.div
                             key={index}
-                            className="glass-panel p-8 rounded-3xl group hover:border-primary/50 transition-all duration-300 flex flex-col h-full"
+                            className="glass-card p-8 rounded-[40px] group hover:border-primary/50 transition-all duration-500 flex flex-col h-full shimmer relative perspective-1000"
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            whileHover={{ y: -5 }}
+                            transition={{ duration: 0.6, delay: index * 0.1 }}
+                            whileHover={{
+                                scale: 1.02,
+                                rotateY: index % 2 === 0 ? 5 : -5,
+                                rotateX: 2,
+                                translateZ: 20
+                            }}
                         >
-                            <div className="flex justify-between items-center mb-6">
-                                <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                                    <Folder className="w-6 h-6" />
+                            <div className="flex justify-between items-center mb-8">
+                                <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 transform group-hover:rotate-12 shadow-inner">
+                                    <Folder className="w-7 h-7" />
                                 </div>
-                                <div className="flex gap-4">
-                                    <a href={project.github} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-colors">
-                                        <Github className="w-5 h-5" />
-                                    </a>
-                                    <a href={project.demo} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-accent transition-colors">
-                                        <ExternalLink className="w-5 h-5" />
-                                    </a>
+                                <div className="flex gap-3">
+                                    {[
+                                        { icon: <Github className="w-5 h-5" />, href: project.github, color: "hover:text-white" },
+                                        { icon: <Linkedin className="w-5 h-5" />, href: "https://linkedin.com/in/ishita-ghosh-b1282366", color: "hover:text-[#0A66C2]" },
+                                        { icon: <ExternalLink className="w-5 h-5" />, href: project.demo, color: "hover:text-accent" }
+                                    ].map((link, i) => (
+                                        <a
+                                            key={i}
+                                            href={link.href}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className={`w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 ${link.color} transition-all duration-300 backdrop-blur-md border border-white/5 hover:border-white/20`}
+                                        >
+                                            {link.icon}
+                                        </a>
+                                    ))}
                                 </div>
                             </div>
 
-                            <h3 className="text-2xl font-bold text-slate-100 group-hover:text-primary transition-colors mb-2">{project.title}</h3>
-                            <p className="text-xs text-slate-500 font-mono mb-4">{project.date}</p>
+                            <div className="space-y-4 mb-8">
+                                <h3 className="text-3xl font-bold text-white group-hover:text-primary transition-colors font-outfit tracking-tight leading-tight">
+                                    {project.title}
+                                </h3>
+                                <p className="text-[10px] text-primary font-bold font-mono uppercase tracking-[0.2em]">
+                                    {project.date}
+                                </p>
+                                <p className="text-slate-400 leading-relaxed font-jakarta text-[15px]">
+                                    {project.description}
+                                </p>
+                            </div>
 
-                            <p className="text-slate-300 leading-relaxed mb-8 flex-grow">
-                                {project.description}
-                            </p>
-
-                            <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-slate-700/50">
+                            <div className="flex flex-wrap gap-2 mt-auto pt-6 border-t border-white/5">
                                 {project.tech.map((tech, i) => (
-                                    <span key={i} className="text-xs font-medium text-slate-400 bg-slate-900/50 px-3 py-1 rounded-full">
+                                    <span key={i} className="text-[11px] font-bold text-slate-300 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full hover:bg-primary/20 hover:text-white transition-colors cursor-default backdrop-blur-sm">
                                         {tech}
                                     </span>
                                 ))}

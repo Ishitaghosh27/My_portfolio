@@ -34,141 +34,185 @@ export default function Contact() {
         setIsSubmitting(false);
     };
     return (
-        <section id="contact" className="py-24 relative overflow-hidden bg-slate-900">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] -z-10"></div>
+        <section id="contact" className="py-32 relative overflow-hidden bg-[#030712]">
+            {/* Dynamic Background Glows */}
+            <motion.div
+                className="absolute top-1/4 -left-20 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] -z-10"
+                animate={{
+                    x: [0, 50, 0],
+                    y: [0, 30, 0],
+                }}
+                transition={{
+                    duration: 10,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }}
+            />
+            <motion.div
+                className="absolute bottom-1/4 -right-20 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[100px] -z-10"
+                animate={{
+                    x: [0, -40, 0],
+                    y: [0, -60, 0],
+                }}
+                transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }}
+            />
 
             <div className="container mx-auto px-6 md:px-12">
                 <motion.div
-                    className="text-center mb-16"
+                    className="flex flex-col items-center mb-20 text-center"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h2 className="text-3xl md:text-5xl font-bold mb-4">Get In Touch</h2>
-                    <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mb-6"></div>
-                    <p className="text-slate-400 max-w-2xl mx-auto">Currently seeking an entry-level Django Developer role. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+                    <span className="text-primary font-bold tracking-[0.3em] uppercase text-xs mb-4">Availability</span>
+                    <h2 className="text-4xl md:text-6xl font-extrabold font-outfit text-white tracking-tighter">
+                        Get In <span className="text-gradient">Touch</span>
+                    </h2>
+                    <div className="w-12 h-1 bg-primary rounded-full mt-6 mb-8"></div>
+                    <p className="text-slate-400 max-w-xl font-jakarta text-lg">
+                        Currently seeking <span className="text-white font-semibold italic">entry-level Django Developer</span> roles. Let's collaborate and build something spectacular!
+                    </p>
                 </motion.div>
 
-                <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-                    {/* Contact Info */}
+                <div className="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto items-center">
+                    {/* Contact Info - Glass Style */}
                     <motion.div
-                        className="space-y-8"
+                        className="space-y-10"
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <div className="glass-panel p-8 rounded-3xl h-full flex flex-col justify-center">
-                            <h3 className="text-2xl font-bold mb-8 text-white">Contact Information</h3>
+                        <div className="glass-card p-10 md:p-14 rounded-[40px] relative overflow-hidden">
+                            <h3 className="text-2xl font-bold mb-10 text-white font-outfit">Contact Details</h3>
 
-                            <div className="space-y-6">
-                                <a href="mailto:ishitaghosh2117@gmail.com" className="flex items-center gap-4 text-slate-300 hover:text-primary transition-colors group">
-                                    <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                                        <Mail className="w-5 h-5" />
+                            <div className="space-y-8">
+                                <a href="mailto:ishitaghosh2117@gmail.com" className="flex items-center gap-6 group">
+                                    <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center shrink-0 border border-white/10 group-hover:bg-primary group-hover:border-primary transition-all duration-300 shadow-lg">
+                                        <Mail className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
                                     </div>
                                     <div>
-                                        <h4 className="text-sm font-medium text-slate-500 mb-1">Email</h4>
-                                        <p className="font-semibold text-lg">ishitaghosh2117@gmail.com</p>
+                                        <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Email Me</h4>
+                                        <p className="font-extrabold text-xl text-slate-200 group-hover:text-white transition-colors">ishitaghosh2117@gmail.com</p>
                                     </div>
                                 </a>
 
-                                <a href="tel:+919109556689" className="flex items-center gap-4 text-slate-300 hover:text-primary transition-colors group">
-                                    <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                                        <Phone className="w-5 h-5" />
+                                <a href="tel:+919109556689" className="flex items-center gap-6 group">
+                                    <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center shrink-0 border border-white/10 group-hover:bg-accent group-hover:border-accent transition-all duration-300 shadow-lg">
+                                        <Phone className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
                                     </div>
                                     <div>
-                                        <h4 className="text-sm font-medium text-slate-500 mb-1">Phone</h4>
-                                        <p className="font-semibold text-lg">+91 9109556689</p>
+                                        <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Call Me</h4>
+                                        <p className="font-extrabold text-xl text-slate-200 group-hover:text-white transition-colors">+91 9109556689</p>
                                     </div>
                                 </a>
 
-                                <div className="flex items-center gap-4 text-slate-300 group">
-                                    <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center shrink-0">
-                                        <MapPin className="w-5 h-5" />
+                                <div className="flex items-center gap-6">
+                                    <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center shrink-0 border border-white/10">
+                                        <MapPin className="w-6 h-6 text-white" />
                                     </div>
                                     <div>
-                                        <h4 className="text-sm font-medium text-slate-500 mb-1">Location</h4>
-                                        <p className="font-semibold text-lg">Raipur, Chhattisgarh(C.G)</p>
+                                        <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Located In</h4>
+                                        <p className="font-extrabold text-xl text-slate-200">Raipur, Chhattisgarh, IN</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="mt-12 pt-8 border-t border-slate-700/50">
-                                <h4 className="text-sm font-medium text-slate-500 mb-4">Social Profiles</h4>
+                            <div className="mt-14 pt-10 border-t border-white/5 flex items-center gap-8">
+                                <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest">Connect</h4>
                                 <div className="flex gap-4">
-                                    <a href="https://github.com/ishitaghosh27" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-[#333] transition-all group">
-                                        <Github className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                                    <a href="https://github.com/ishitaghosh27" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-all">
+                                        <Github className="w-5 h-5" />
                                     </a>
-                                    <a href="https://linkedin.com/in/ishita-ghosh-b1282366" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-[#0A66C2] transition-all group">
-                                        <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                                    <a href="https://linkedin.com/in/ishita-ghosh-b1282366" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-[#0A66C2] transition-all">
+                                        <Linkedin className="w-5 h-5" />
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </motion.div>
 
-                    {/* Contact Form */}
+                    {/* Contact Form - Futuristic Style */}
                     <motion.div
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                     >
-                        <form className="glass-panel p-8 md:p-10 rounded-3xl space-y-6" onSubmit={onSubmit}>
-                            <div>
-                                <label htmlFor="name" className="block text-sm font-medium text-slate-400 mb-2">Your Name</label>
+                        <form className="space-y-8" onSubmit={onSubmit}>
+                            <div className="relative group">
                                 <input
                                     type="text"
                                     id="name"
                                     name="name"
                                     required
-                                    className="w-full px-5 py-3 rounded-xl bg-slate-900/50 border border-slate-700/80 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all font-sans"
-                                    placeholder="John Doe"
+                                    className="w-full bg-transparent border-b-2 border-white/10 py-4 text-white text-xl focus:outline-none focus:border-primary transition-all peer placeholder-transparent font-jakarta"
+                                    placeholder="Name"
                                 />
+                                <label htmlFor="name" className="absolute left-0 -top-2 text-xs font-bold text-primary uppercase tracking-widest transition-all peer-placeholder-shown:text-slate-500 peer-placeholder-shown:text-lg peer-placeholder-shown:top-4 peer-focus:-top-2 peer-focus:text-primary peer-focus:text-xs">
+                                    Your Full Name
+                                </label>
                             </div>
 
-                            <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-slate-400 mb-2">Your Email</label>
+                            <div className="relative group">
                                 <input
                                     type="email"
                                     id="email"
                                     name="email"
                                     required
-                                    className="w-full px-5 py-3 rounded-xl bg-slate-900/50 border border-slate-700/80 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all font-sans"
-                                    placeholder="john@example.com"
+                                    className="w-full bg-transparent border-b-2 border-white/10 py-4 text-white text-xl focus:outline-none focus:border-accent transition-all peer placeholder-transparent font-jakarta"
+                                    placeholder="Email"
                                 />
+                                <label htmlFor="email" className="absolute left-0 -top-2 text-xs font-bold text-accent uppercase tracking-widest transition-all peer-placeholder-shown:text-slate-500 peer-placeholder-shown:text-lg peer-placeholder-shown:top-4 peer-focus:-top-2 peer-focus:text-accent peer-focus:text-xs">
+                                    Your Email Address
+                                </label>
                             </div>
 
-                            <div>
-                                <label htmlFor="message" className="block text-sm font-medium text-slate-400 mb-2">Your Message</label>
+                            <div className="relative group">
                                 <textarea
                                     id="message"
                                     name="message"
                                     required
-                                    rows="4"
-                                    className="w-full px-5 py-3 rounded-xl bg-slate-900/50 border border-slate-700/80 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all resize-none font-sans"
-                                    placeholder="Hello, I'd like to talk about..."
+                                    rows="1"
+                                    className="w-full bg-transparent border-b-2 border-white/10 py-4 text-white text-xl focus:outline-none focus:border-primary transition-all peer placeholder-transparent resize-none font-jakarta overflow-hidden"
+                                    placeholder="Message"
+                                    onInput={(e) => {
+                                        e.target.style.height = 'auto';
+                                        e.target.style.height = e.target.scrollHeight + 'px';
+                                    }}
                                 ></textarea>
+                                <label htmlFor="message" className="absolute left-0 -top-2 text-xs font-bold text-primary uppercase tracking-widest transition-all peer-placeholder-shown:text-slate-500 peer-placeholder-shown:text-lg peer-placeholder-shown:top-4 peer-focus:-top-2 peer-focus:text-primary peer-focus:text-xs">
+                                    Message Details
+                                </label>
                             </div>
 
-                            <button
+                            <motion.button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className={`w-full py-4 rounded-xl text-white font-bold flex items-center justify-center gap-2 transition-all group ${isSubmitting ? 'bg-slate-700 cursor-not-allowed' : 'bg-gradient-to-r from-primary to-accent hover:shadow-[0_0_20px_rgba(139,92,246,0.5)]'}`}
+                                className={`w-full py-5 rounded-2xl text-white font-black uppercase tracking-[0.2em] flex items-center justify-center gap-4 transition-all relative overflow-hidden group/btn ${isSubmitting ? 'bg-slate-800' : 'bg-white text-black hover:text-white'}`}
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
                             >
-                                {isSubmitting ? 'Sending...' : 'Send Message'}
-                                {!isSubmitting && <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
-                            </button>
+                                {!isSubmitting && (
+                                    <div className="absolute inset-0 bg-primary translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300"></div>
+                                )}
+                                <span className="relative z-10">{isSubmitting ? 'Transmitting...' : 'Send Transmission'}</span>
+                                {!isSubmitting && <Send className="w-5 h-5 relative z-10 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />}
+                            </motion.button>
 
                             {result && (
                                 <motion.div
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className={`mt-4 p-4 rounded-xl text-center font-medium flex items-center justify-center gap-2 ${result.includes('Success') ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'}`}
+                                    className={`mt-6 p-5 rounded-2xl text-center font-bold flex items-center justify-center gap-3 border ${result.includes('Success') ? 'bg-green-500/10 text-green-400 border-green-500/20' : 'bg-red-500/10 text-red-400 border-red-500/20'}`}
                                 >
-                                    {result.includes('Success') && <CheckCircle className="w-5 h-5" />}
-                                    {result}
+                                    {result.includes('Success') && <CheckCircle className="w-6 h-6" />}
+                                    <span className="text-sm">{result.includes('Success') ? "TRANSMISSION SUCCESSFUL: Connection Established." : result}</span>
                                 </motion.div>
                             )}
                         </form>
@@ -176,8 +220,11 @@ export default function Contact() {
                 </div>
             </div>
 
-            <footer className="mt-24 border-t border-slate-800 pt-8 pb-8 text-center text-slate-500 relative z-10">
-                <p>Designed & Built by Ishita Ghosh &copy; {new Date().getFullYear()}</p>
+            <footer className="mt-32 border-t border-white/5 pt-12 pb-12 text-center relative z-10 bg-[#020617]/50 backdrop-blur-md">
+                <p className="font-outfit text-slate-500 text-sm tracking-widest font-bold uppercase">
+                    Digitally Crafted By <span className="text-primary hover:text-accent transition-colors cursor-crosshair">Ishita Ghosh</span> &copy; {new Date().getFullYear()}
+                </p>
+                <p className="text-[10px] text-slate-700 mt-2 tracking-[0.4em] uppercase">Built with Precision & Innovation</p>
             </footer>
         </section>
     );

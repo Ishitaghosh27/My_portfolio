@@ -10,127 +10,150 @@ export default function About() {
     ];
 
     return (
-        <section id="about" className="py-24 relative overflow-hidden">
-            <div className="container mx-auto px-6 md:px-12">
+        <section id="about" className="py-32 relative overflow-hidden bg-[#030712]">
+            {/* Ambient background decoration */}
+            <div className="absolute top-1/4 right-0 w-96 h-96 bg-accent/5 rounded-full blur-[100px] -z-10 animate-pulse"></div>
 
+            <div className="container mx-auto px-6 md:px-12">
                 <motion.div
-                    className="text-center mb-16"
+                    className="flex flex-col items-center mb-20"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h2 className="text-3xl md:text-5xl font-bold mb-4">About Me</h2>
-                    <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full"></div>
+                    <span className="text-primary font-bold tracking-[0.3em] uppercase text-xs mb-4">Background</span>
+                    <h2 className="text-4xl md:text-6xl font-extrabold font-outfit text-white tracking-tighter">
+                        Know <span className="text-gradient">Who I Am</span>
+                    </h2>
+                    <div className="w-12 h-1 bg-primary rounded-full mt-6"></div>
                 </motion.div>
 
-                <div className="grid md:grid-cols-2 gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[minmax(180px,auto)]">
 
-                    {/* Summary & Education */}
+                    {/* Summary - Major Column */}
                     <motion.div
-                        className="space-y-8"
-                        initial={{ opacity: 0, x: -50 }}
+                        className="md:col-span-8 glass-card p-10 rounded-[40px] flex flex-col justify-center relative overflow-hidden group"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
+                        whileHover={{ y: -5 }}
+                    >
+                        <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <BookOpen className="w-24 h-24 text-primary" />
+                        </div>
+                        <h3 className="text-3xl font-bold mb-6 font-outfit flex items-center gap-3 text-white">
+                            <span className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center text-primary text-sm">01</span>
+                            My Story
+                        </h3>
+                        <p className="text-xl text-slate-300 leading-relaxed font-jakarta">
+                            Enthusiastic <span className="text-white font-semibold">Computer Science fresher</span> with a deep passion for the Python ecosystem. I specialize in building robust, <span className="text-primary">database-driven applications</span> using Django, focusing on security, scalability, and clean modular code. I thrive on solving complex backend challenges and translating them into seamless user experiences.
+                        </p>
+                    </motion.div>
+
+                    {/* Quick Stats/Badge */}
+                    <motion.div
+                        className="md:col-span-4 glass-card p-8 rounded-[40px] flex flex-col items-center justify-center text-center bg-gradient-to-br from-primary/10 to-transparent border-primary/20"
+                        initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
+                        transition={{ duration: 0.5, delay: 0.1 }}
+                        whileHover={{ y: -5 }}
                     >
-                        <div className="glass-panel p-8 rounded-2xl relative overflow-hidden">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-bl-full -z-10"></div>
-                            <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                                <BookOpen className="text-primary" /> Summary
-                            </h3>
-                            <p className="text-slate-300 leading-relaxed">
-                                Enthusiastic Computer Science fresher with practical experience in Django, Python, and database-driven web applications. Skilled in developing secure and scalable applications with authentication, REST APIs, and relational databases. Seeking an entry-level Django Developer role to apply technical skills and grow professionally.
-                            </p>
+                        <div className="w-20 h-20 rounded-3xl bg-primary flex items-center justify-center text-white mb-6 shadow-[0_0_30px_rgba(139,92,246,0.5)]">
+                            <GraduationCap className="w-10 h-10" />
                         </div>
+                        <h4 className="text-2xl font-bold text-white font-outfit mb-2">B.Tech CS</h4>
+                        <p className="text-slate-400 font-jakarta text-sm">Graduating 2026</p>
+                        <div className="mt-6 px-4 py-2 bg-white/5 border border-white/10 rounded-full text-xs font-bold text-primary tracking-widest uppercase">
+                            Open for Roles
+                        </div>
+                    </motion.div>
 
-                        <div className="glass-panel p-8 rounded-2xl">
-                            <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                                <GraduationCap className="text-accent" /> Education
-                            </h3>
-
-                            <div className="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-700 before:to-transparent">
-
-                                <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                                    <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-800 group-hover:bg-accent text-slate-500 group-hover:text-white shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow transition-colors z-10">
-                                        <span className="w-3 h-3 bg-accent rounded-full"></span>
+                    {/* Skills - Bento Style */}
+                    <motion.div
+                        className="md:col-span-12 lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                    >
+                        {skills.map((skillGroup, index) => (
+                            <motion.div
+                                key={index}
+                                className="glass-card p-8 rounded-[40px] group hover:border-primary/40 transition-all duration-300"
+                                whileHover={{ y: -5 }}
+                            >
+                                <div className="flex items-center gap-4 mb-6">
+                                    <div className="p-3 bg-white/5 rounded-2xl group-hover:bg-primary/20 transition-colors">
+                                        {skillGroup.icon}
                                     </div>
-                                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-slate-700 bg-slate-800/50 shadow-sm ml-4 md:ml-0 md:group-odd:text-right group-hover:border-accent/50 transition-colors">
-                                        <div className="flex items-center justify-between md:group-odd:flex-row-reverse space-x-2 mb-1">
-                                            <div className="font-bold text-slate-200">Bachelor of Technology (B.Tech) - CS</div>
-                                        </div>
-                                        <div className="text-slate-400">Kalinga University, Naya Raipur</div>
-                                        <time className="block mb-2 text-sm font-normal leading-none text-slate-500 mt-2">2022 - Present</time>
-                                    </div>
+                                    <h4 className="text-lg font-bold text-slate-100 font-outfit">{skillGroup.category}</h4>
                                 </div>
-
-                                <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                                    <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-800 group-hover:bg-primary text-slate-500 group-hover:text-white shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow transition-colors z-10">
-                                        <span className="w-3 h-3 bg-primary rounded-full"></span>
-                                    </div>
-                                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-slate-700 bg-slate-800/50 shadow-sm ml-4 md:ml-0 md:group-odd:text-right group-hover:border-primary/50 transition-colors">
-                                        <div className="flex items-center justify-between md:group-odd:flex-row-reverse space-x-2 mb-1">
-                                            <div className="font-bold text-slate-200">High School Diploma</div>
-                                        </div>
-                                        <div className="text-slate-400">Pranavananda Academy, Raipur</div>
-                                        <time className="block mb-2 text-sm font-normal leading-none text-slate-500 mt-2">2021</time>
-                                    </div>
+                                <div className="flex flex-wrap gap-2">
+                                    {skillGroup.items.map((item, i) => (
+                                        <span
+                                            key={i}
+                                            className="px-4 py-1.5 bg-white/5 border border-white/5 rounded-full text-xs font-bold text-slate-400 group-hover:text-white group-hover:border-white/20 transition-all cursor-default"
+                                        >
+                                            {item}
+                                        </span>
+                                    ))}
                                 </div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
 
+                    {/* Education Timeline - Compact Bento */}
+                    <motion.div
+                        className="md:col-span-12 lg:col-span-5 glass-card p-10 rounded-[40px] flex flex-col justify-center"
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.3 }}
+                    >
+                        <h3 className="text-2xl font-bold mb-10 font-outfit flex items-center gap-3 text-white">
+                            <GraduationCap className="text-accent" /> Academic Journey
+                        </h3>
+
+                        <div className="space-y-12 relative border-l-2 border-white/5 pl-8 ml-2">
+                            <div className="relative">
+                                <div className="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-accent shadow-[0_0_15px_rgba(14,165,233,0.8)] border-4 border-[#030712]"></div>
+                                <h4 className="text-lg font-bold text-white font-outfit leading-none mb-2">B.Tech in Computer Science</h4>
+                                <p className="text-sm text-accent font-bold mb-3 uppercase tracking-wider">Kalinga University • 2022-Present</p>
+                                <p className="text-sm text-slate-400 font-jakarta">Focusing on Full-Stack development and Database systems.</p>
+                            </div>
+
+                            <div className="relative">
+                                <div className="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-slate-700 border-4 border-[#030712]"></div>
+                                <h4 className="text-lg font-bold text-slate-300 font-outfit leading-none mb-2">High School Diploma</h4>
+                                <p className="text-sm text-slate-500 font-bold mb-3 uppercase tracking-wider">Pranavananda Academy • 2021</p>
                             </div>
                         </div>
                     </motion.div>
 
-                    {/* Technical Skills */}
+                    {/* Soft Skills Banner */}
                     <motion.div
-                        className="space-y-6"
-                        initial={{ opacity: 0, x: 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        className="md:col-span-12 glass-card p-8 rounded-[40px] flex flex-wrap items-center justify-between gap-6 overflow-hidden relative"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
+                        transition={{ duration: 0.5, delay: 0.4 }}
                     >
-                        <h3 className="text-2xl font-bold mb-4 pl-4 border-l-4 border-primary">Technical Skills</h3>
-
-                        <div className="grid gap-6">
-                            {skills.map((skillGroup, index) => (
-                                <motion.div
-                                    key={index}
-                                    className="glass-panel p-6 rounded-2xl hover:border-slate-600 transition-colors"
-                                    whileHover={{ y: -5 }}
-                                >
-                                    <div className="flex items-center gap-3 mb-4">
-                                        <div className="p-2 bg-slate-800 rounded-lg">
-                                            {skillGroup.icon}
-                                        </div>
-                                        <h4 className="text-lg font-semibold text-slate-200">{skillGroup.category}</h4>
-                                    </div>
-                                    <div className="flex flex-wrap gap-2">
-                                        {skillGroup.items.map((item, i) => (
-                                            <span
-                                                key={i}
-                                                className="px-3 py-1 bg-slate-800 border border-slate-700 rounded-full text-sm text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
-                                            >
-                                                {item}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </motion.div>
+                        <div className="flex items-center gap-4 relative z-10">
+                            <div className="p-3 bg-white/5 rounded-2xl">
+                                <Terminal className="w-6 h-6 text-pink-400" />
+                            </div>
+                            <h4 className="text-sm font-bold uppercase tracking-[0.3em] font-outfit text-slate-500">Soft Skills</h4>
+                        </div>
+                        <div className="flex flex-wrap gap-3 relative z-10">
+                            {['Problem-solving', 'Teamwork', 'Communication', 'Adaptability', 'Leadership'].map((skill, i) => (
+                                <span key={i} className="text-sm font-bold text-slate-300 border border-white/5 bg-white/5 px-6 py-2 rounded-2xl hover:bg-primary/10 hover:border-primary/30 hover:text-white transition-all cursor-default">
+                                    {skill}
+                                </span>
                             ))}
                         </div>
-
-                        {/* Soft Skills */}
-                        <div className="mt-8 pt-8 border-t border-slate-700/50">
-                            <h4 className="text-sm uppercase tracking-widest text-slate-500 mb-4 font-semibold">Soft Skills</h4>
-                            <div className="flex flex-wrap gap-2">
-                                {['Problem-solving', 'Teamwork', 'Communication', 'Adaptability', 'Time Management', 'Leadership'].map((skill, i) => (
-                                    <span key={i} className="text-sm text-slate-400 flex items-center gap-1.5 border border-slate-800 bg-slate-900/50 px-3 py-1.5 rounded-md">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-accent text-accent"></span>
-                                        {skill}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-
                     </motion.div>
 
                 </div>
